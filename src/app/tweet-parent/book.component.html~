@@ -1,0 +1,22 @@
+<div class="container">
+  <h1>Your Tweets
+    <a [routerLink]="['/tweet-create']" class="btn btn-default btn-lg">
+      <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+    </a>
+  </h1>
+  <table class="table">
+    <thead>
+      <tr>
+        <th>Following</th>
+       
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let tweet of tweets">
+        <td>{{ tweet.title }}</td>
+        <td>{{ tweet.author }}</td>
+        <td><a [routerLink]="['/tweet-details', tweet._id]">Show Detail</a></td>
+      </tr>
+    </tbody>
+  </table>
+</div>

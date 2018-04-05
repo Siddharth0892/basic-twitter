@@ -1,0 +1,16 @@
+var express = require('express');
+var router = express.Router();
+var mongoose = require('mongoose');
+var Tweet = require('../models/Tweet.js');
+
+/* GET TWEETS BY MONGO QUERY FOR HASHTAGS */
+router.get('/hashtag/:hashtag', function(req, res, next) {
+console.log('Inside route ......');
+console.log(req.body);
+	Tweet.find({"hashtag" : {"$regex" : req.params.hashtags}}, function(err, post){
+	if (err) return next(err);
+    	res.json(post);
+});
+});
+
+module.exports = router;

@@ -1,0 +1,30 @@
+var mongoose = require('mongoose');
+var User = require('../models/User.js');
+
+module.exports.signup = function(req, res) {
+	console.log("1 : "+req.body.userName);
+	User.findOne({
+		userName: req.body.userName
+	}, function(err, user) {
+		if (err) {
+			console.log(err);
+		}
+		var message;
+		if (user) {
+			message = "user exists";
+			console.log(message)
+		} else if (!user) {
+			message = "user doesn't exist";
+			var toAddUser = {
+				userName: req.body.userName,
+				pass: req.body.pass
+			};
+			User.create(toAddUser, function(err, newUser) {
+				if (err) return next(err);
+			});
+		}
+		res.json({
+			message: message
+		});
+	});
+};

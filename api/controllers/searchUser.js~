@@ -1,0 +1,13 @@
+var mongoose = require('mongoose');
+var User = require('../models/User.js');
+
+module.exports.signup = function(req, res) {
+var name = req.params.user;
+	User.findOne({
+		userName: name
+	}, function(err, user) {
+		if (err) return next(err);
+		return res.send(user);
+	});
+};
+

@@ -1,0 +1,13 @@
+<app-tweet [likesCount]=likesCount
+	   [isLiked] = isLiked  
+		(likeme) = "onLikingTweet($event)"> 		
+</app-tweet>
+
+
+
+
+
+
+
+
+

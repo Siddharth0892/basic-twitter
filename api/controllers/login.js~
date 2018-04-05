@@ -1,0 +1,23 @@
+var mongoose = require('mongoose');
+var User = require('../models/User.js');
+var storage = require('node-persist');
+
+module.exports.login = function(req, res) {
+var username = req.body.userName;
+	var password = req.body.pass;
+	User.findOne({
+		userName: username,
+		pass: password
+	}, function(err, user) {
+		if (err) return next(err);
+		if (!user) return res.send('Not logged in!');
+	//you must first call storage.initSync
+storage.initSync();
+
+//then start using it
+storage.setItemSync('username',user.userName);
+
+		return res.send(user);
+	});
+};
+

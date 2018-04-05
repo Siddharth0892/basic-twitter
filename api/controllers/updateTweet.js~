@@ -1,0 +1,10 @@
+var mongoose = require('mongoose');
+var Tweet = require('../models/Tweet.js');
+
+module.exports.saveTweet = function(req, res) {
+Tweet.findByIdAndUpdate(req.params.id, req.body, function(err, post) {
+		if (err) return next(err);
+		res.json(post);
+	});
+};
+
