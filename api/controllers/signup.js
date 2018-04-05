@@ -11,7 +11,6 @@ module.exports.signup = function(req, res) {
 		var message;
 		if (user) {
 			message = "user exists";
-			console.log(message)
 		} else if (!user) {
 			message = "You Have been successfully signed up, please login to continue";
 			var toAddUser = {
