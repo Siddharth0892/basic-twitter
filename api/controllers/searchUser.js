@@ -13,9 +13,8 @@ module.exports.searchUser = function(req, res) {
 				userName: name
 			}).count({}, function(err, count) {
 				user['tweetCount'] = count;
-				console.log('git check');
+				return res.send(user);
 			});
 		}
-		return res.send(user);
 	});
 };
