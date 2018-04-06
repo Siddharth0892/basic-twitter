@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewEncapsulation ,  Input, Output, EventEmitter} from '@angular/core';
+import { Component, OnInit, ViewEncapsulation, Input, Output, EventEmitter } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
 
@@ -9,35 +9,24 @@ import { HttpClient } from '@angular/common/http';
   encapsulation: ViewEncapsulation.None
 })
 export class TweetComponent implements OnInit {
-hashTag : string;
-@Output('likeme') likeme = new EventEmitter();
-  tweets: any;
-  tweet: any = {};
-@Input('likesCount') likesCount : number ;
-
-@Input('isLiked') isLiked : boolean;
-  constructor(private http: HttpClient) { }
-
-  ngOnInit() {
-    this.http.get('/tweet').subscribe(data => {
-      console.log(data);
-      this.tweets = data;
+  tweets = [];
+  constructor(private http: HttpClient) {
+    this.http.get('/tweet').subscribe((response) => {
+      this.tweets = Object.values(response);
     });
   }
-
-
-onClickLike(tweet){
-console.log('emitting.....');
-this.likeme.emit({tweet});
-}
-
-
-onSearchClick(){
-var encodeduri = encodeURI(this.hashTag);
-console.log(encodeduri);
-console.log('inside Search click :' +this.hashTag);
-this.http.get('/hashtag/'+encodeduri).subscribe(data => {
-console.log(data);
-});
-}
+  ngOnInit() {
+  }
+  addTweet(input) {
+    this.http.post('/tweet', { "title": input.value }).subscribe((response) => {
+      var tweet = { id: this.tweets.length + 1, title: input.value , tweetId : response["_id"] };
+      this.tweets.unshift(tweet);
+    });
+  }
+  removeTweet(tweet) {
+    this.http.delete('/tweet/'+tweet["tweetId"]).subscribe((response) => {
+      var index = this.tweets.indexOf(tweet);
+      this.tweets.splice(index, 1);
+    });
+  }
 }

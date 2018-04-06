@@ -13,7 +13,7 @@ module.exports.searchUser = function(req, res) {
 				userName: name
 			}).count({}, function(err, count) {
 				user['tweetCount'] = count;
-				return res.send(user);
+				return res.json(user);
 			});
 		}
 	});

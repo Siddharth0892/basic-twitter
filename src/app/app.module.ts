@@ -3,41 +3,33 @@ import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { RouterModule, Routes } from '@angular/router';
-
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AppComponent } from './app.component';
 import { TweetComponent } from './tweet/tweet.component';
-import { TweetDetailComponent } from './tweet-detail/tweet-detail.component';
-import { TweetCreateComponent } from './tweet-create/tweet-create.component';
-import { TweetEditComponent } from './tweet-edit/tweet-edit.component';
-import { TweetParentComponent } from './tweet-parent/tweet-parent.component';
+import { TweetSearchComponent } from './tweet-search/tweet-search.component';
+import { MatInputModule } from '@angular/material/input';
+import { TweetSignupComponent } from './tweet-signup/tweet-signup.component';
 const appRoutes: Routes = [
-  {
+
+
+ {
     path: 'tweets',
     component: TweetComponent,
     data: { title: 'Tweet List' }
   },
- {
+
+  {
     path: 'tweet/:id',
     component: TweetComponent,
     data: { title: 'Tweet By ID' }
   },
   {
-    path: 'tweet-details/:id',
-    component: TweetDetailComponent,
-    data: { title: 'Tweet Details' }
-  },
-  {
-    path: 'tweet-create',
-    component: TweetCreateComponent,
-    data: { title: 'Create Tweet' }
-  },
-  {
-    path: 'tweet-edit/:id',
-    component: TweetEditComponent,
-    data: { title: 'Edit Tweet' }
+    path: 'tweet/',
+    component: TweetComponent,
+    data: { title: 'Tweet Created' }
   },
   { path: '',
-    redirectTo: '/tweets',
+    redirectTo: '/',
     pathMatch: 'full'
   }
 ];
@@ -45,15 +37,15 @@ const appRoutes: Routes = [
   declarations: [
     AppComponent,
     TweetComponent,
-    TweetDetailComponent,
-    TweetCreateComponent,
-    TweetEditComponent,
-	TweetParentComponent
+    TweetSearchComponent,
+    TweetSignupComponent
   ],
   imports: [
     BrowserModule,
+    BrowserAnimationsModule,
     FormsModule,
     HttpClientModule,
+    MatInputModule,
     RouterModule.forRoot(
       appRoutes,
       { enableTracing: true } // <-- debugging purposes only

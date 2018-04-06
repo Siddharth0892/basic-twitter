@@ -27,7 +27,7 @@ var ctrlsearchUser = require('../controllers/searchUser');
 router.delete('/:id', ctrldelTweet.deleteTweet);
 router.get('/', ctrlallTweet.allTweets);
 router.get('/:id', ctrlsingleTweetById.singleTweetById);
-router.post('/', ctrlsaveTweet.saveTweet);
+router.post('/:title', ctrlsaveTweet.saveTweet);
 router.put('/:id', ctrlupdateTweet.updateTweet);
 router.get('/hashtag/:hashtag', ctrltweetsByHashTag.tweetsByHashTag);
 router.post('/signup', ctrlsignup.signup);

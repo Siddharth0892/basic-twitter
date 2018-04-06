@@ -1,6 +1,6 @@
-.glyphicon {
-	color: #ccc;
-	cursor : pointer;
+.form-control {
+	max-width: 50%;
+	min-width: 50%;
 }
 
 .highlighted {
