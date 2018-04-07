@@ -32,6 +32,7 @@ export class TweetComponent implements OnInit {
 onLogout(){
 this.http.get('/tweet/logout/').subscribe((respone)=>{
 console.log('you have been logged out');
+    this.router.navigate(['/tweet-login']);
 });
 }
 }
