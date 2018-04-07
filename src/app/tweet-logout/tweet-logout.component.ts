@@ -29,9 +29,4 @@ export class TweetComponent implements OnInit {
       this.tweets.splice(index, 1);
     });
   }
-onLogout(){
-this.http.get('/tweet/logout/').subscribe((respone)=>{
-console.log('you have been logged out');
-});
-}
 }

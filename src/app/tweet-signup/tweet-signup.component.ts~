@@ -10,13 +10,16 @@ import { HttpClient } from '@angular/common/http';
 })
 export class TweetSignupComponent implements OnInit {
   message = "You have successfully signed up";
-  constructor(private http: HttpClient, ) {
+  constructor(private http: HttpClient, private router: Router) {
   console.log('inside sign up');
   }
   ngOnInit() {
   }
-  onSignUp(input) {
-   
+  onSignUp(username, password) {
+   this.http.post('tweet/signup/', {"userName" : username.value, "pass" : password.value}).subscribe((response) =>{
+ this.router.navigate(['/tweet-login']);
+}, (err) => {
+          console.log(err);
+        });
   }
-
 }

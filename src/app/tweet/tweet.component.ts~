@@ -10,7 +10,7 @@ import { HttpClient } from '@angular/common/http';
 })
 export class TweetComponent implements OnInit {
   tweets = [];
-  constructor(private http: HttpClient) {
+  constructor(private http: HttpClient, private router: Router, private route: ActivatedRoute) {
     this.http.get('/tweet').subscribe((response) => {
       this.tweets = Object.values(response);
     });
@@ -20,7 +20,6 @@ export class TweetComponent implements OnInit {
   addTweet(input) {
     this.http.post('/tweet', { "title": input.value }).subscribe((response) => {
       var tweet = { id: this.tweets.length + 1, title: input.value , tweetId : response["_id"] };
-console.log(tweet);
       this.tweets.unshift(tweet);
     });
   }
@@ -30,4 +29,9 @@ console.log(tweet);
       this.tweets.splice(index, 1);
     });
   }
+onLogout(){
+this.http.get('/tweet/logout/').subscribe((respone)=>{
+console.log('you have been logged out');
+});
+}
 }

@@ -1,5 +1,4 @@
 <h1>Tweets</h1>
-<button type="button" class="btn btn-primary" (click)="logout()">logout</button>
 <input type="text" #ps>
   <button type="button" class="btn btn-primary" (click)="addTweet(ps)">Tweet</button>
 <ul>
@@ -7,8 +6,4 @@
  {{t.title}}
     <button (click)="removeTweet(t)">Remove</button>
   </li>
-
-<a [routerLink]="['/tweet-search']" class="btn btn-default btn-lg">
-      <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
-    </a>
 </ul>

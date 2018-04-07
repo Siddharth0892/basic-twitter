@@ -1,8 +1,2 @@
 
-<div class="partition">
-<app-tweet></app-tweet>
-</div>
-<div class="partition partition-filled">
-<app-tweet-search></app-tweet-search>
-</div>
-
+<router-outlet></router-outlet>

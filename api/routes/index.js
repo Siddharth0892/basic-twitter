@@ -32,7 +32,7 @@ router.put('/:id', ctrlupdateTweet.updateTweet);
 router.get('/hashtag/:hashtag', ctrltweetsByHashTag.tweetsByHashTag);
 router.post('/signup', ctrlsignup.signup);
 router.post('/login', ctrllogin.login);
-router.post('/logout', ctrllogout.logout);
+router.get('/logout', ctrllogout.logout);
 router.get('/user/:user', ctrlsearchUser.searchUser);
 
 module.exports = router;

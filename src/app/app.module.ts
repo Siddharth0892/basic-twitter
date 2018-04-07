@@ -9,15 +9,31 @@ import { TweetComponent } from './tweet/tweet.component';
 import { TweetSearchComponent } from './tweet-search/tweet-search.component';
 import { MatInputModule } from '@angular/material/input';
 import { TweetSignupComponent } from './tweet-signup/tweet-signup.component';
-const appRoutes: Routes = [
+import { TweetLoginComponent } from './tweet-login/tweet-login.component';
 
+
+const appRoutes: Routes = [
+ {
+    path: '',
+    component: TweetSignupComponent,
+    data: { title: 'Tweet Signup' }
+  },
 
  {
     path: 'tweets',
     component: TweetComponent,
     data: { title: 'Tweet List' }
   },
-
+{
+    path: 'tweet-login',
+    component: TweetLoginComponent,
+    data: { title: 'Tweet Login' }
+  },
+{
+    path: 'tweet-search',
+    component: TweetSearchComponent,
+    data: { title: 'Tweet Login' }
+  },
   {
     path: 'tweet/:id',
     component: TweetComponent,
@@ -38,7 +54,8 @@ const appRoutes: Routes = [
     AppComponent,
     TweetComponent,
     TweetSearchComponent,
-    TweetSignupComponent
+    TweetSignupComponent,
+    TweetLoginComponent
   ],
   imports: [
     BrowserModule,

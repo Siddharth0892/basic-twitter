@@ -15,8 +15,11 @@ export class TweetSignupComponent implements OnInit {
   }
   ngOnInit() {
   }
-  onSignUp(input) {
-   
+  onSignUp(username, password) {
+   this.http.post('tweet/signup/', {"userName" : username.value, "pass" : password.value}).subscribe((response) =>{
+ this.router.navigate(['/tweet-login']);
+}, (err) => {
+          console.log(err);
+        });
   }
-
 }

@@ -1,9 +1,19 @@
-<form class="example-form">
-  <mat-form-field class="example-full-width">
-    <input matInput placeholder="Favorite food" value="Sushi">
-  </mat-form-field>
+<form action="action_page.php" style="border:1px solid #ccc">
+  <div class="container">
+    <h1>Login Up</h1>
+    <p>Please fill in the information to create an account.</p>
+    <hr>
 
-  <mat-form-field class="example-full-width">
-    <textarea matInput placeholder="Leave a comment"></textarea>
-  </mat-form-field>
+    <label for="email"><b>Username</b></label>
+    <input type="text" #username placeholder="Enter Email" name="email" required>
+
+  
+    <label for="psw-repeat"><b> Password</b></label>
+    <input type="password" #passw placeholder="Password" name="psw" required>
+
+    <div class="clearfix">
+
+      <button type="submit" class="signupbtn" (click) = "onSignUp(username, passw)">Sign Up</button>
+    </div>
+  </div>
 </form>
