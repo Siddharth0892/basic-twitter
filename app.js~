@@ -10,7 +10,7 @@ var app = express();
 
 var mongoose = require('mongoose');
 mongoose.Promise = require('bluebird');
-mongoose.connect('mongodb://localhost/BasicTwitter', {
+mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost/BasicTwitter', {
 		useMongoClient: true,
 		promiseLibrary: require('bluebird')
 	})
